@@ -23,12 +23,11 @@ export class MarkdownIndex {
     private _addPrefix(line: string, prefix: string, markCount: number) {
         // remove previous index
         let markIndex = line.indexOf(this._indexBase);
-        markIndex++;
         if (markIndex == -1) {
             markIndex = 0;
         }
         var re = new RegExp(
-            "(^\\s*\\" + this._indexBase + this._indexBase + "+)\\s*((\\d+\\.)+)\\s+",
+            "(^\\s*\\" + this._indexBase + "+)\\s*((\\d+\\.)+)\\s+",
             "g"
         );
         line = line.replace(re, "$1");
@@ -51,7 +50,6 @@ export class MarkdownIndex {
                 return true;
             }
         });
-        count--;
         return count;
     }
 
@@ -75,7 +73,7 @@ export class MarkdownIndex {
                 continue;
             }
 
-            if (isInCodeArea == false && line.startsWith(this._indexBase + this._indexBase)) {
+            if (isInCodeArea == false && line.startsWith(this._indexBase)) {
                 // find the start mark count
                 targetMarkCount = this._countStartsWith((x) => {
                     return x == this._indexBase;
